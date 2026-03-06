@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dh2wadwn1m5n8"]
+
+[ext_resource type="Script" uid="uid://0vlla2xak3er" path="res://scenes/Fish.gd" id="1_431eu"]
+[ext_resource type="Texture2D" uid="uid://bpomp7laf2qmf" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue_dead.png" id="2_02ob7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_431eu"]
+friction = 0.3
+bounce = 0.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pgks6"]
+radius = 36.0
+height = 108.0
+
+[node name="FISH" type="RigidBody2D" unique_id=1173374899]
+physics_material_override = SubResource("PhysicsMaterial_431eu")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_431eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1751991158]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_pgks6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1631216140]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_02ob7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
